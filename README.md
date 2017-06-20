@@ -13,15 +13,20 @@ python 2.7
 ### 安装依赖
 使用virtualenv创建项目运行虚拟环境
 ```bash
+安装virtualenv
 $ pip install virtualenv
-$ cd cms/
 
-创建虚拟环境env，并激活
+在你当前工作目录创建虚拟环境env，并激活
 $ virtualenv env
 $ source env/bin/active
 ```
+将项目CMS克隆到本地
+```bash
+$ git clone https://github.com/UNION-CMS/CMS.git
+```
 使用pip install -r 安装一些必要的库
 ```bash
+$ cd CMS/
 $ pip install -r requestments.txt
 ```
 
