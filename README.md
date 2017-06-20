@@ -8,6 +8,7 @@
 
 ### 运行环境
 ubuntu16.04
+
 python 2.7
 
 ### 安装依赖
@@ -19,6 +20,7 @@ $ pip install virtualenv
 在你当前工作目录创建虚拟环境env，并激活
 $ virtualenv env
 $ source env/bin/active
+$ env/Scripts\activate(Windows)
 ```
 将项目CMS克隆到本地
 ```bash
