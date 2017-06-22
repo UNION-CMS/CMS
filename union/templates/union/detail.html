@@ -45,6 +45,7 @@
     								<th>Name</th>
     								<th>Student ID</th>
                                     <th>Sex</th>
+                                    <th>Position</th>
     								<th>Major</th>
                                     <th>Actions</th>
     							</tr>
@@ -55,6 +56,7 @@
 	    								<td>{{ member.name }}</td>
 	    								<td>{{ member.member_id }}</td>
                                         <td>{{ member.sex }}</td>
+                                        <td>{{ member.position }}</td>
 	    								<td>{{ member.major }}</td>
 	    								<td>
                                             <form action='{% url "union:member_edit" member.id %}' method="get" style="display: inline;">
