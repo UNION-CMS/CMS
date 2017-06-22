@@ -7,9 +7,6 @@
 *  可以根据成员的学号，姓名，专业进行全搜索（无法进行模糊搜索）
 
 ### 运行环境
-
-ubuntu16.04
-
 ubuntu16.04(windows7+)
 
 
@@ -23,8 +20,8 @@ $ pip install virtualenv
 
 在你当前工作目录创建虚拟环境env，并激活
 $ virtualenv env
-$ source env/bin/active
-$ env/Scripts\activate(Windows)
+$ source env/bin/activate (ubuntu)
+$ env\Scripts\activate (Windows)
 ```
 将项目CMS克隆到本地
 ```bash
