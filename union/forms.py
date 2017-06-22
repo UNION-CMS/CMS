@@ -20,4 +20,4 @@ class MemberForm(forms.ModelForm):
 
 	class Meta:
 		model = Member
-		fields = ['name', 'member_id', 'major','sex']
+		fields = ['name', 'member_id', 'major','sex', 'position']
