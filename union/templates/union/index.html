@@ -20,7 +20,7 @@
                             <h4><span class="glyphicon glyphicon-user"></span> {{ union.num_people }}</h4>
 
                             <!-- View Details -->
-                            <a href='{% url "union:detail" union.id %}' class="btn btn-primary btn-sm" role="button">View Details</a>
+                            <a href='{% url "union:detail" union.id %}' class="btn btn-primary btn-sm" role="button">View Union</a>
 
                             <!-- Edit union -->
                             <form action='{% url "union:union_edit" union.id %}' method="get" style="display: inline;">

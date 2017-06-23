@@ -23,13 +23,13 @@ urlpatterns = [
     url(r'^view_all/$', views.view_all, name='view_all'),
 
     #/union/login_user
-    url(r'^login_user/$', views.login_user, name='login_user'),
+    # url(r'^login_user/$', views.login_user, name='login_user'),
     
     #/union/register
-    url(r'^register/$', views.register, name='register'),
+    url(r'^users/register/$', views.register, name='register'),
 
     #/union/logout_user
-    url(r'^logout_user/$', views.logout_user, name='logout_user'),
+    # url(r'^logout_user/$', views.logout_user, name='logout_user'),
 
     #/union/<union_id>/union_delete
     url(r'^(?P<union_id>[0-9]+)/union_delete/$', views.union_delete, name='union_delete'),

@@ -1,6 +1,6 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import Union, Member
+from .models import Union, Member, User
 
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget=forms.PasswordInput)
@@ -8,6 +8,12 @@ class UserForm(forms.ModelForm):
 	class Meta:
 		model = User
 		fields = ['username', 'email', 'password']
+
+class RegisterForm(UserCreationForm):
+
+	class Meta(UserCreationForm.Meta):
+		model = User
+		fields = ('username', 'email')
 
 class UnionForm(forms.ModelForm):
 
@@ -20,4 +26,4 @@ class MemberForm(forms.ModelForm):
 
 	class Meta:
 		model = Member
-		fields = ['name', 'member_id', 'major','sex']
+		fields = ['name', 'member_id', 'major','sex', 'position']

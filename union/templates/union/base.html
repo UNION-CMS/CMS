@@ -58,7 +58,7 @@
 					</a>
 				</li>
 				<li class="">
-					<a href='{% url "union:logout_user" %}'>
+					<a href="{% url 'logout' %}?next={{ request.path }}">
 						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
 					</a>
 				</li>

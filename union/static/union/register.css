@@ -1,0 +1,11 @@
+body {
+	background: url('images/background.png');
+}
+
+.errorlist {
+    color: red;
+}
+        
+h2 {
+    text-align: center;
+}

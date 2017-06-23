@@ -1,32 +1,38 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.db.models.aggregates import Count
 from .models import Union,Member
-from .forms import UnionForm, MemberForm, UserForm
+from .forms import UnionForm, MemberForm, UserForm, RegisterForm
 from haystack.forms import SearchForm
 
 IMAGE_FILE_TYPE = ['jpg', 'png', 'jpeg']
 
 def index(request):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:	
 		unions = Union.objects.filter(user=request.user).annotate(num_people=Count('member'))
 		return render(request, 'union/index.html', {'unions':unions})
 
 def detail(request, union_id):
-	union = get_object_or_404(Union, pk=union_id)
-	return render(request, 'union/detail.html', {'union': union})
+	if not request.user.is_authenticated():
+		return HttpResponseRedirect(reverse('login'))
+	else:
+		union = get_object_or_404(Union, pk=union_id)
+		return render(request, 'union/detail.html', {'union': union})
 
 def union_info(request, union_id):
-	union = get_object_or_404(Union, pk=union_id)
-	return render(request, 'union/union_info.html', {'union': union})
+	if not request.user.is_authenticated():
+		return HttpResponseRedirect(reverse('login'))
+	else:
+		union = get_object_or_404(Union, pk=union_id)
+		return render(request, 'union/union_info.html', {'union': union})
 
 def union_add(request):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:
 		form = UnionForm(request.POST or None, request.FILES or None)
 
@@ -52,7 +58,7 @@ def union_add(request):
 
 def union_edit(request, union_id):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:
 		union = get_object_or_404(Union, pk=union_id)
 		if request.method == 'POST':
@@ -69,7 +75,7 @@ def union_edit(request, union_id):
 		
 def union_delete(request, union_id):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:
 		union = get_object_or_404(Union, pk=union_id)
 		union.delete()
@@ -78,7 +84,7 @@ def union_delete(request, union_id):
 
 def member_add(request, union_id):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:
 		form = MemberForm(request.POST or None)
 		union = get_object_or_404(Union, pk=union_id)
@@ -98,7 +104,7 @@ def member_add(request, union_id):
 
 def member_delete(request, member_id):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:
 		member = get_object_or_404(Member, pk=member_id)
 		union_id = member.union.id
@@ -108,7 +114,7 @@ def member_delete(request, member_id):
 
 def member_edit(request, member_id):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:
 		member = get_object_or_404(Member, pk=member_id)
 		union = member.union
@@ -131,7 +137,7 @@ def member_edit(request, member_id):
 
 def view_all(request):
 	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('union:login_user'))
+		return HttpResponseRedirect(reverse('login'))
 	else:
 		unions = Union.objects.filter(user=request.user)
 		members = []
@@ -140,46 +146,60 @@ def view_all(request):
 			members += union.member_set.all()
 		return render(request, 'union/view_all.html', {'members':members})
 
-def login_user(request):
-	if request.method == 'POST':
-		username = request.POST['username']
-		password = request.POST['password']
+# def login_user(request):
+# 	return HttpResponse('ok')
+	# if request.method == 'POST':
+	# 	username = request.POST['username']
+	# 	password = request.POST['password']
 
-		user = authenticate(username=username, password=password)
+	# 	user = authenticate(username=username, password=password)
 
-		if user is not None:
-			if user.is_active:
-				login(request, user)
-				unions = Union.objects.filter(user=request.user)
-				return HttpResponseRedirect(reverse('union:index'))
-			else:
-				return render(request, 'union/login.html', {'error_message':"Your Account is disabled!"})
-		else:
-			return render(request, 'union/login.html', {'error_message':"Invalid Input"})
+	# 	if user is not None:
+	# 		if user.is_active:
+	# 			login(request, user)
+	# 			unions = Union.objects.filter(user=request.user)
+	# 			return HttpResponseRedirect(reverse('union:index'))
+	# 		else:
+	# 			return render(request, 'union/login.html', {'error_message':"Your Account is disabled!"})
+	# 	else:
+	# 		return render(request, 'union/login.html', {'error_message':"Invalid Input"})
 
-	return render(request, 'union/login.html')
+	# return render(request, 'union/login.html')
+
+# def register(request):
+# 	form = UserForm(request.POST or None)
+# 	if form.is_valid():
+# 		user = form.save(commit=False)
+# 		username = form.cleaned_data['username']
+# 		password = form.cleaned_data['password']
+# 		user.set_password(password)
+# 		user.save()
+
+# 		user = authenticate(username=username, password=password)
+# 		if user is not None:
+# 			if user.is_active:
+# 				login(request, user)
+# 				unions = Union.objects.filter(user=request.user)
+# 				return render(request, 'union/index.html', {'unions':unions})
+ 
+# 	return render(request, 'union/register.html', {'form':form})
 
 def register(request):
-	form = UserForm(request.POST or None)
-	if form.is_valid():
-		user = form.save(commit=False)
-		username = form.cleaned_data['username']
-		password = form.cleaned_data['password']
-		user.set_password(password)
-		user.save()
+	if request.method == 'POST':
+		form = RegisterForm(request.POST)
 
-		user = authenticate(username=username, password=password)
-		if user is not None:
-			if user.is_active:
-				login(request, user)
-				unions = Union.objects.filter(user=request.user)
-				return render(request, 'union/index.html', {'unions':unions})
- 
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+	else:
+		form = RegisterForm()
+
 	return render(request, 'union/register.html', {'form':form})
 
-def logout_user(request):
-	logout(request)
-	return HttpResponseRedirect(reverse('union:login_user'))
+
+# def logout_user(request):
+# 	logout(request)
+# 	return HttpResponseRedirect(reverse('login'))
 
 def full_search(request):
 	sform = SearchForm(request.GET)
