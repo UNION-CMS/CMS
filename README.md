@@ -7,15 +7,9 @@
 *  可以根据成员的学号，姓名，专业进行全搜索（无法进行模糊搜索）
 
 ### 运行环境
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
 ubuntu16.04
 
->>>>>>> cd263927e02fccf50e7abdbb2e3f95049cf9c908
-=======
->>>>>>> 7cce9e9a91458c7e18ab64e499589133a6000fff
+
 ubuntu16.04(windows7+)
 
 
@@ -34,12 +28,6 @@ $ virtualenv env
 
 $ source env/bin/activate (ubuntu16.04)
 $ env\Scripts\activate (windows7+)
-
-$ source env/bin/active
-$ env/Scripts\activate(Windows)
-
-$ source env/bin/activate (ubuntu)
-$ env\Scripts\activate (Windows)
 ```
 将项目CMS克隆到本地
 ```bash
