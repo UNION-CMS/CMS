@@ -23,7 +23,6 @@ $ pip install virtualenv
 
 在你当前工作目录创建虚拟环境env，并激活
 
-```bash
 $ virtualenv env
 
 $ source env/bin/activate (ubuntu16.04)
@@ -43,6 +42,4 @@ $ pip install -r requestments.txt
 ```bash
 $ python manage.py runserver 默认是8000端口要是8000端口被占用，改用8001或者其他没被占用的端口
 ```
-在浏览器中输入[http://localhost:8000/union]()即可。用户名:admin  密码：admin..123
-
-Django自带后台管理，在浏览器中输入[http://localhost:8000/admin](), 用户名：admin 密码：admin..123
+在浏览器中输入[http://localhost:8000/
