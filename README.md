@@ -8,11 +8,14 @@
 
 ### 运行环境
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 ubuntu16.04
 
 >>>>>>> cd263927e02fccf50e7abdbb2e3f95049cf9c908
+=======
+>>>>>>> 7cce9e9a91458c7e18ab64e499589133a6000fff
 ubuntu16.04(windows7+)
 
 
@@ -25,14 +28,18 @@ python 2.7
 $ pip install virtualenv
 
 在你当前工作目录创建虚拟环境env，并激活
+
+```bash
 $ virtualenv env
-<<<<<<< HEAD
+
 $ source env/bin/activate (ubuntu16.04)
 $ env\Scripts\activate (windows7+)
-=======
+
 $ source env/bin/active
 $ env/Scripts\activate(Windows)
->>>>>>> cd263927e02fccf50e7abdbb2e3f95049cf9c908
+
+$ source env/bin/activate (ubuntu)
+$ env\Scripts\activate (Windows)
 ```
 将项目CMS克隆到本地
 ```bash
