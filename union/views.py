@@ -146,44 +146,6 @@ def view_all(request):
 			members += union.member_set.all()
 		return render(request, 'union/view_all.html', {'members':members})
 
-# def login_user(request):
-# 	return HttpResponse('ok')
-	# if request.method == 'POST':
-	# 	username = request.POST['username']
-	# 	password = request.POST['password']
-
-	# 	user = authenticate(username=username, password=password)
-
-	# 	if user is not None:
-	# 		if user.is_active:
-	# 			login(request, user)
-	# 			unions = Union.objects.filter(user=request.user)
-	# 			return HttpResponseRedirect(reverse('union:index'))
-	# 		else:
-	# 			return render(request, 'union/login.html', {'error_message':"Your Account is disabled!"})
-	# 	else:
-	# 		return render(request, 'union/login.html', {'error_message':"Invalid Input"})
-
-	# return render(request, 'union/login.html')
-
-# def register(request):
-# 	form = UserForm(request.POST or None)
-# 	if form.is_valid():
-# 		user = form.save(commit=False)
-# 		username = form.cleaned_data['username']
-# 		password = form.cleaned_data['password']
-# 		user.set_password(password)
-# 		user.save()
-
-# 		user = authenticate(username=username, password=password)
-# 		if user is not None:
-# 			if user.is_active:
-# 				login(request, user)
-# 				unions = Union.objects.filter(user=request.user)
-# 				return render(request, 'union/index.html', {'unions':unions})
- 
-# 	return render(request, 'union/register.html', {'form':form})
-
 def register(request):
 	if request.method == 'POST':
 		form = RegisterForm(request.POST)
@@ -196,10 +158,6 @@ def register(request):
 
 	return render(request, 'union/register.html', {'form':form})
 
-
-# def logout_user(request):
-# 	logout(request)
-# 	return HttpResponseRedirect(reverse('login'))
 
 def full_search(request):
 	sform = SearchForm(request.GET)

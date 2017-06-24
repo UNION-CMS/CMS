@@ -1,3 +1,5 @@
 {{ object.name }}
 {{ object.member_id }}
 {{ object.major }}
+{{ object.sex }}
+{{ object.position }}
