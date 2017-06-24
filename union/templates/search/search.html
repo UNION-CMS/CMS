@@ -1,0 +1,60 @@
+{% extends 'union/base.html' %}
+{% block title %}All Member{% endblock %}
+{% block people_active %}class="active"{% endblock %}
+{% load highlight %}
+{% block body %}
+<style>
+    span.highlighted {
+        color: red;
+    }
+</style>
+<div class="container-fluid songs-container">
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                {% if query %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Student ID</th>
+                                <th>Sex</th>
+                                <th>Position</th>
+                                <th>Major</th>
+                                <th>Union</th>
+                                <th>Add</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for result in page.object_list %}  
+                            <tr>
+                                <td>{% highlight result.object.name with query %}</td>
+                                <td>{% highlight result.object.member_id with query %}</td>
+                                <td>{% highlight result.object.sex with query %}</td>
+                                <td>{% highlight result.object.position with query %}</td>
+                                <td>{% highlight result.object.major with query %}</td>
+                                <td>{{ result.object.union.name }}</td>
+                                <td>{{ result.object.add_time | date:'Y-m-d'}}</td>
+                            </tr>
+                        {% empty %}
+                            <tr class="no-result">
+                                <td> No results!</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div>Please input some keywords!</div>
+                {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

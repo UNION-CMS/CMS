@@ -33,7 +33,7 @@ POSITION_CHOICES = (
 class Member(models.Model):
 	union = models.ForeignKey(Union, on_delete=models.CASCADE)
 	name = models.CharField(max_length=100)
-	member_id = models.IntegerField(unique=True)
+	member_id = models.CharField(unique=True, max_length=20)
 	major = models.CharField(max_length=50)
 	sex = models.CharField(max_length=10, choices=SEX_CHOICES)
 	position = models.CharField(max_length=10, choices=POSITION_CHOICES)
