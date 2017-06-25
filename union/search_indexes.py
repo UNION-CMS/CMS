@@ -7,7 +7,7 @@ class MemberIndex(indexes.SearchIndex, indexes.Indexable):
 	# member_id = indexes.CharField(model_attr='member_id')
 	# major = indexes.CharField(model_attr='major')
 	#sex = indexes.CharField(model_attr='sex')
-
+    #test
 	def get_model(self):
 		return Member
 
