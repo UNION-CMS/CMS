@@ -6,15 +6,15 @@ from django.db.models.aggregates import Count
 from .models import Union,Member
 from .forms import UnionForm, MemberForm, RegisterForm
 from haystack.forms import SearchForm
+from django.contrib.auth.decorators import login_required
 
 IMAGE_FILE_TYPE = ['jpg', 'png', 'jpeg']
 
-def index(request):
-	if not request.user.is_authenticated():
-		return HttpResponseRedirect(reverse('login'))
-	else:	
-		unions = Union.objects.filter(user=request.user).annotate(num_people=Count('member'))
-		return render(request, 'union/index.html', {'unions':unions})
+@login_required
+def index(request):	
+	unions = Union.objects.filter(user=request.user).annotate(num_people=Count('member'))
+	return render(request, 'union/index.html', {'unions':unions})
+
 
 def detail(request, union_id):
 	if not request.user.is_authenticated():

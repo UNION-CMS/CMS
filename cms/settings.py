@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'union.User'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/users/login/'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
