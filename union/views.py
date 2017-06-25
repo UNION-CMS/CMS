@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.db.models.aggregates import Count
 from .models import Union,Member
-from .forms import UnionForm, MemberForm, UserForm, RegisterForm
+from .forms import UnionForm, MemberForm, RegisterForm
 from haystack.forms import SearchForm
 
 IMAGE_FILE_TYPE = ['jpg', 'png', 'jpeg']
