@@ -42,4 +42,4 @@ $ pip install -r requestments.txt
 ```bash
 $ python manage.py runserver 默认是8000端口要是8000端口被占用，改用8001或者其他没被占用的端口
 ```
-在浏览器中输入[http://localhost:8000/
+在浏览器中输入[http://localhost:8000/]()。

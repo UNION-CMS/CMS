@@ -37,6 +37,4 @@ urlpatterns = [
 
     #/<member_id>/member_edit
     url(r'^(?P<member_id>[0-9]+)/member_edit/$', views.member_edit, name='member_edit'),
-
-    url(r'^full_search/$', views.full_search, name='full_search'),
 ]
