@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*2^0_+j1nkhh=ea!p*=*j!xf77w1&3jfk2($ecq!%$wot7%fq7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # add search
 # full text search
 HAYSTACK_CONNECTIONS = {

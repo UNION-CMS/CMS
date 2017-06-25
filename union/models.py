@@ -12,7 +12,7 @@ class User(AbstractUser):
 class Union(models.Model):
 	user = models.ForeignKey(User, default=1)
 	name = models.CharField(max_length=100, unique=True)
-	logo = models.FileField()
+	logo = models.URLField()
 	created_time = models.DateTimeField(auto_now=True)
 	info = models.TextField(blank=True)
 
